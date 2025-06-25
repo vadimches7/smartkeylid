@@ -220,11 +220,44 @@
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
             position: relative;
             overflow: hidden;
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5), 0 0 0 10px rgba(102, 126, 234, 0.1);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            }
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            animation: none;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #7788ff 0%, #8854b3 100%);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button::after {
@@ -243,6 +276,87 @@
         .cta-button:active::after {
             width: 300px;
             height: 300px;
+        }
+
+        /* Дополнительные визуальные элементы для кнопки */
+        .cta-button-wrapper {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .button-text {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .button-subtext {
+            display: block;
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: normal;
+        }
+
+        /* Индикатор срочности */
+        .urgency-indicator {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #d63384;
+            font-weight: bold;
+            animation: flash 1.5s ease-in-out infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .urgency-indicator::before,
+        .urgency-indicator::after {
+            content: '🔥';
+            margin: 0 10px;
+        }
+
+        /* Звездочки вокруг кнопки */
+        .cta-button-wrapper {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 20px;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .star:nth-child(2) { top: 10px; left: 10%; animation-delay: 0s; }
+        .star:nth-child(3) { top: 10px; right: 10%; animation-delay: 0.5s; }
+        .star:nth-child(4) { bottom: 10px; left: 20%; animation-delay: 1s; }
+        .star:nth-child(5) { bottom: 10px; right: 20%; animation-delay: 1.5s; }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .arrow-indicator {
+            text-align: center;
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 10px;
+            animation: bounce 1s ease-in-out infinite;
         }
 
         /* Социальное доказательство */
@@ -317,6 +431,18 @@
             .stats {
                 flex-direction: column;
                 gap: 20px;
+            }
+
+            .cta-button {
+                padding: 15px;
+            }
+
+            .button-text {
+                font-size: 18px;
+            }
+
+            .button-subtext {
+                font-size: 12px;
             }
         }
 
@@ -406,9 +532,22 @@
                 </div>
             </div>
 
-            <button class="cta-button" onclick="submitForm()">
-                🚀 Получить все материалы БЕСПЛАТНО
-            </button>
+            <div class="urgency-indicator">
+                Только сегодня! Завтра материалы будут платными
+            </div>
+
+            <div class="arrow-indicator">👇 Нажмите сюда 👇</div>
+
+            <div class="cta-button-wrapper">
+                <span class="star">✨</span>
+                <span class="star">⭐</span>
+                <span class="star">✨</span>
+                <span class="star">⭐</span>
+                <button class="cta-button" onclick="submitForm()">
+                    <span class="button-text">🚀 Получить все материалы БЕСПЛАТНО</span>
+                    <span class="button-subtext">Осталось 17 комплектов на сегодня</span>
+                </button>
+            </div>
 
             <div class="social-proof">
                 <div class="avatars">
@@ -472,9 +611,7 @@
 
         // Функция для кнопки
         function submitForm() {
-            // Здесь будет интеграция с вашим ботом/формой
-            console.log('Форма отправлена!');
-            // window.location.href = 'https://my.winwinbot.com/bot/1/RealtyExpertBot_bot';
+            window.location.href = 'https://t.me/RealtyExpertBot_bot';
         }
 
         // Анимация при скролле
@@ -501,6 +638,33 @@
             const newCount = currentCount + Math.floor(Math.random() * 3) + 1;
             document.querySelector('.social-proof strong').textContent = newCount.toLocaleString('ru-RU');
         }, 5000);
+
+        // Уменьшение количества оставшихся комплектов
+        let remainingKits = 17;
+        setInterval(() => {
+            if (remainingKits > 3) {
+                remainingKits -= Math.floor(Math.random() * 2) + 1;
+                if (remainingKits < 3) remainingKits = 3;
+                document.querySelector('.button-subtext').textContent = `Осталось ${remainingKits} комплектов на сегодня`;
+            }
+        }, 30000);
     </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       ym(102996203, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102996203" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </body>
 </html>
