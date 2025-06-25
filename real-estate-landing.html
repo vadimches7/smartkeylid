@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Получите 5 инструментов для выгодной покупки квартиры БЕСПЛАТНО</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Плавающие элементы фона */
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-100px) rotate(120deg); }
+            66% { transform: translateY(100px) rotate(240deg); }
+        }
+
+        /* Основная карточка */
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Бейдж "Бесплатно" */
+        .free-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            transform: rotate(5deg);
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(5deg); }
+            50% { transform: scale(1.05) rotate(5deg); }
+            100% { transform: scale(1) rotate(5deg); }
+        }
+
+        /* Заголовок */
+        h1 {
+            font-size: 32px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        /* Подзаголовок */
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Таймер */
+        .timer-container {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: shake 2s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+            20%, 40%, 60%, 80% { transform: translateX(2px); }
+        }
+
+        .timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d63384;
+        }
+
+        /* Список подарков */
+        .gifts-list {
+            margin-bottom: 30px;
+        }
+
+        .gift-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            transition: all 0.3s ease;
+            animation: slideIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .gift-item:nth-child(1) { animation-delay: 0.1s; }
+        .gift-item:nth-child(2) { animation-delay: 0.2s; }
+        .gift-item:nth-child(3) { animation-delay: 0.3s; }
+        .gift-item:nth-child(4) { animation-delay: 0.4s; }
+        .gift-item:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .gift-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .gift-icon {
+            font-size: 40px;
+            min-width: 50px;
+        }
+
+        .gift-content h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .gift-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .gift-value {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background: #28a745;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* CTA кнопка */
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Социальное доказательство */
+        .social-proof {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .avatars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: -10px;
+            border: 3px solid white;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .avatar:first-child { margin-left: 0; }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .main-card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .gift-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .gift-value {
+                position: static;
+                display: inline-block;
+                margin-top: 10px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Анимация появления элементов при скролле */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Плавающие элементы фона -->
+    <div class="floating-elements">
+        <div class="floating-icon" style="top: 10%; left: 10%; animation-delay: 0s;">🏠</div>
+        <div class="floating-icon" style="top: 20%; left: 80%; animation-delay: 3s;">💰</div>
+        <div class="floating-icon" style="top: 50%; left: 5%; animation-delay: 5s;">📋</div>
+        <div class="floating-icon" style="top: 70%; left: 90%; animation-delay: 7s;">🔑</div>
+        <div class="floating-icon" style="top: 80%; left: 50%; animation-delay: 10s;">💎</div>
+    </div>
+
+    <div class="container">
+        <div class="main-card">
+            <div class="free-badge">БЕСПЛАТНО</div>
+            
+            <h1>🎁 Получите 5 профессиональных инструментов для покупки квартиры в Москве</h1>
+            
+            <p class="subtitle">
+                Я Мария Ефимова, эксперт SmartKey с 10-летним опытом.<br>
+                Помогла 127 семьям сэкономить в среднем <strong>650 000 ₽</strong> на покупке жилья
+            </p>
+
+            <div class="timer-container">
+                <div>⏰ Специальное предложение заканчивается через:</div>
+                <div class="timer" id="countdown">05:23:47</div>
+            </div>
+
+            <div class="gifts-list">
+                <div class="gift-item">
+                    <div class="gift-icon">📋</div>
+                    <div class="gift-content">
+                        <h3>Мастер чек-лист "50 пунктов проверки"</h3>
+                        <p>Защитит от 90% проблем при покупке новостройки</p>
+                    </div>
+                    <span class="gift-value">Ценность 50 000₽</span>
+                </div>
+
+                <div class="gift-item">
+                    <div class="gift-icon">💰</div>
+                    <div class="gift-content">
+                        <h3>Калькулятор реальной стоимости</h3>
+                        <p>Покажет ВСЕ расходы и поможет сэкономить до 500 000₽</p>
+                    </div>
+                    <span class="gift-value">Ценность 30 000₽</span>
+                </div>
+
+                <div class="gift-item">
+                    <div class="gift-icon">📊</div>
+                    <div class="gift-content">
+                        <h3>Ипотечный навигатор 2025</h3>
+                        <p>Все программы господдержки + секретные условия банков</p>
+                    </div>
+                    <span class="gift-value">Ценность 40 000₽</span>
+                </div>
+
+                <div class="gift-item">
+                    <div class="gift-icon">📈</div>
+                    <div class="gift-content">
+                        <h3>Аналитический отчет рынка</h3>
+                        <p>Инсайдерская информация о ценах и трендах июля 2025</p>
+                    </div>
+                    <span class="gift-value">Ценность 70 000₽</span>
+                </div>
+
+                <div class="gift-item">
+                    <div class="gift-icon">💎</div>
+                    <div class="gift-content">
+                        <h3>Каталог "20 скрытых жемчужин"</h3>
+                        <p>ЖК с максимальными скидками до 20% (только в июле!)</p>
+                    </div>
+                    <span class="gift-value">Ценность 100 000₽</span>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="submitForm()">
+                🚀 Получить все материалы БЕСПЛАТНО
+            </button>
+
+            <div class="social-proof">
+                <div class="avatars">
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=2')"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=3')"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=4')"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=5')"></div>
+                </div>
+                <p style="color: #666; margin-bottom: 20px;">
+                    Присоединяйтесь к <strong>3 247</strong> счастливым обладателям материалов
+                </p>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">127</div>
+                        <div class="stat-label">Семей купили квартиры</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">650 000₽</div>
+                        <div class="stat-label">Средняя экономия</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-label">Оценка клиентов</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Таймер обратного отсчета
+        function updateCountdown() {
+            const countdownEl = document.getElementById('countdown');
+            let time = countdownEl.textContent.split(':');
+            let hours = parseInt(time[0]);
+            let minutes = parseInt(time[1]);
+            let seconds = parseInt(time[2]);
+            
+            seconds--;
+            
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                    if (hours < 0) {
+                        hours = 23;
+                    }
+                }
+            }
+            
+            countdownEl.textContent = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+
+        // Функция для кнопки
+        function submitForm() {
+            // Здесь будет интеграция с вашим ботом/формой
+            console.log('Форма отправлена!');
+            // window.location.href = 'https://my.winwinbot.com/bot/1/RealtyExpertBot_bot';
+        }
+
+        // Анимация при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Счетчик посетителей (имитация)
+        setInterval(() => {
+            const currentCount = parseInt(document.querySelector('.social-proof strong').textContent.replace(/\s/g, ''));
+            const newCount = currentCount + Math.floor(Math.random() * 3) + 1;
+            document.querySelector('.social-proof strong').textContent = newCount.toLocaleString('ru-RU');
+        }, 5000);
+    </script>
+</body>
+</html>
