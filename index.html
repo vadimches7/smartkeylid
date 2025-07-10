@@ -2,876 +2,210 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
-    <title>Получите 5 инструментов для выгодной покупки квартиры БЕСПЛАТНО</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Получите 5 инструментов для покупки квартиры</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-family: Arial, sans-serif;
             background: #667eea;
-            background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Плавающие элементы фона */
-        .floating-elements {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 1;
-            display: none; /* Скрываем на мобильных для производительности */
-        }
-
-        @media (min-width: 768px) {
-            .floating-elements {
-                display: block;
-            }
-        }
-
-        .floating-icon {
-            position: absolute;
-            font-size: 30px;
-            opacity: 0.1;
-            -webkit-animation: float 20s infinite ease-in-out;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @-webkit-keyframes float {
-            0%, 100% { -webkit-transform: translateY(0) rotate(0deg); transform: translateY(0) rotate(0deg); }
-            33% { -webkit-transform: translateY(-100px) rotate(120deg); transform: translateY(-100px) rotate(120deg); }
-            66% { -webkit-transform: translateY(100px) rotate(240deg); transform: translateY(100px) rotate(240deg); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-100px) rotate(120deg); }
-            66% { transform: translateY(100px) rotate(240deg); }
-        }
-
-        /* Основная карточка */
-        .main-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 40px;
-            position: relative;
-            z-index: 10;
-            -webkit-animation: slideUp 0.6s ease-out;
-            animation: slideUp 0.6s ease-out;
-        }
-
-        @-webkit-keyframes slideUp {
-            from {
-                opacity: 0;
-                -webkit-transform: translateY(50px);
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                -webkit-transform: translateY(0);
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Бейдж "Бесплатно" */
-        .free-badge {
-            position: absolute;
-            top: -15px;
-            right: 30px;
-            background: #f093fb;
-            background: -webkit-linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 10px 30px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 18px;
-            -webkit-transform: rotate(5deg);
-            transform: rotate(5deg);
-            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
-            -webkit-animation: pulse 2s infinite;
-            animation: pulse 2s infinite;
-        }
-
-        @-webkit-keyframes pulse {
-            0% { -webkit-transform: scale(1) rotate(5deg); transform: scale(1) rotate(5deg); }
-            50% { -webkit-transform: scale(1.05) rotate(5deg); transform: scale(1.05) rotate(5deg); }
-            100% { -webkit-transform: scale(1) rotate(5deg); transform: scale(1) rotate(5deg); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1) rotate(5deg); }
-            50% { transform: scale(1.05) rotate(5deg); }
-            100% { transform: scale(1) rotate(5deg); }
-        }
-
-        /* Заголовок */
-        h1 {
-            font-size: 32px;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            color: #667eea;
-            text-align: center;
-        }
-
-        /* Альтернативный стиль для градиентного текста */
-        @supports (-webkit-background-clip: text) {
-            h1 {
-                background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-        }
-
-        /* Подзаголовок */
-        .subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 30px;
+            color: #333;
             line-height: 1.6;
         }
 
-        /* Таймер */
-        .timer-container {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
+        .container {
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
             border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 30px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #667eea;
             text-align: center;
-            -webkit-animation: shake 2s ease-in-out infinite;
-            animation: shake 2s ease-in-out infinite;
+            margin-bottom: 20px;
         }
 
-        @-webkit-keyframes shake {
-            0%, 100% { -webkit-transform: translateX(0); transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { -webkit-transform: translateX(-2px); transform: translateX(-2px); }
-            20%, 40%, 60%, 80% { -webkit-transform: translateX(2px); transform: translateX(2px); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
-            20%, 40%, 60%, 80% { transform: translateX(2px); }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
         }
 
         .timer {
-            font-size: 24px;
-            font-weight: bold;
-            color: #d63384;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
 
-        /* Список подарков */
-        .gifts-list {
-            margin-bottom: 30px;
+        .timer-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d63384;
         }
 
         .gift-item {
             background: #f8f9fa;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: start;
-            -webkit-align-items: flex-start;
-            -ms-flex-align: start;
-            align-items: flex-start;
-            gap: 15px;
-            -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-            -webkit-animation: slideIn 0.6s ease-out forwards;
-            animation: slideIn 0.6s ease-out forwards;
-            opacity: 0;
-            position: relative;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
         }
 
-        .gift-item:nth-child(1) { -webkit-animation-delay: 0.1s; animation-delay: 0.1s; }
-        .gift-item:nth-child(2) { -webkit-animation-delay: 0.2s; animation-delay: 0.2s; }
-        .gift-item:nth-child(3) { -webkit-animation-delay: 0.3s; animation-delay: 0.3s; }
-        .gift-item:nth-child(4) { -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
-        .gift-item:nth-child(5) { -webkit-animation-delay: 0.5s; animation-delay: 0.5s; }
-
-        @-webkit-keyframes slideIn {
-            from {
-                opacity: 0;
-                -webkit-transform: translateX(-30px);
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                -webkit-transform: translateX(0);
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .gift-item:hover {
-            -webkit-transform: translateY(-5px);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .gift-icon {
-            font-size: 40px;
-            min-width: 50px;
-            -webkit-flex-shrink: 0;
-            flex-shrink: 0;
-        }
-
-        .gift-content h3 {
-            color: #333;
+        .gift-title {
+            font-weight: bold;
             margin-bottom: 5px;
-            font-size: 18px;
         }
 
-        .gift-content p {
+        .gift-desc {
             color: #666;
             font-size: 14px;
-            line-height: 1.5;
         }
 
-        .gift-value {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            background: #28a745;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        /* CTA кнопка */
-        .cta-button {
+        .button {
             display: block;
             width: 100%;
             background: #667eea;
-            background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-            -webkit-animation: buttonPulse 2s ease-in-out infinite;
-            animation: buttonPulse 2s ease-in-out infinite;
+            padding: 15px;
+            text-align: center;
             text-decoration: none;
-            text-align: center;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-
-        @-webkit-keyframes buttonPulse {
-            0% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            }
-            50% {
-                -webkit-transform: scale(1.02);
-                transform: scale(1.02);
-                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5), 0 0 0 10px rgba(102, 126, 234, 0.1);
-            }
-            100% {
-                -webkit-transform: scale(1);
-                transform: scale(1);
-                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            }
-        }
-
-        @keyframes buttonPulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            }
-            50% {
-                transform: scale(1.02);
-                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5), 0 0 0 10px rgba(102, 126, 234, 0.1);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            }
-        }
-
-        .cta-button:hover, .cta-button:active {
-            -webkit-animation: none;
-            animation: none;
-            -webkit-transform: translateY(-3px) scale(1.05);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
-            background: -webkit-linear-gradient(135deg, #7788ff 0%, #8854b3 100%);
-            background: linear-gradient(135deg, #7788ff 0%, #8854b3 100%);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: -webkit-linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            -webkit-transition: left 0.5s;
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        /* Дополнительные визуальные элементы для кнопки */
-        .cta-button-wrapper {
-            position: relative;
-            margin: 30px 0;
-        }
-
-        .button-text {
-            display: block;
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .button-subtext {
-            display: block;
-            font-size: 14px;
-            opacity: 0.9;
-            font-weight: normal;
-        }
-
-        /* Индикатор срочности */
-        .urgency-indicator {
-            text-align: center;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
             margin: 20px 0;
-            font-size: 16px;
+        }
+
+        .urgency {
+            text-align: center;
             color: #d63384;
             font-weight: bold;
-            -webkit-animation: flash 1.5s ease-in-out infinite;
-            animation: flash 1.5s ease-in-out infinite;
+            margin: 20px 0;
         }
-
-        @-webkit-keyframes flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes flash {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .urgency-indicator::before,
-        .urgency-indicator::after {
-            content: '🔥';
-            margin: 0 10px;
-        }
-
-        /* Звездочки вокруг кнопки */
-        .star {
-            position: absolute;
-            font-size: 20px;
-            -webkit-animation: sparkle 3s ease-in-out infinite;
-            animation: sparkle 3s ease-in-out infinite;
-            display: none; /* Скрываем на мобильных */
-        }
-
-        @media (min-width: 480px) {
-            .star {
-                display: block;
-            }
-        }
-
-        .star:nth-child(1) { top: 10px; left: 10%; -webkit-animation-delay: 0s; animation-delay: 0s; }
-        .star:nth-child(2) { top: 10px; right: 10%; -webkit-animation-delay: 0.5s; animation-delay: 0.5s; }
-        .star:nth-child(3) { bottom: 10px; left: 20%; -webkit-animation-delay: 1s; animation-delay: 1s; }
-        .star:nth-child(4) { bottom: 10px; right: 20%; -webkit-animation-delay: 1.5s; animation-delay: 1.5s; }
-
-        @-webkit-keyframes sparkle {
-            0%, 100% { 
-                opacity: 0;
-                -webkit-transform: scale(0) rotate(0deg);
-                transform: scale(0) rotate(0deg);
-            }
-            50% { 
-                opacity: 1;
-                -webkit-transform: scale(1) rotate(180deg);
-                transform: scale(1) rotate(180deg);
-            }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { 
-                opacity: 0;
-                transform: scale(0) rotate(0deg);
-            }
-            50% { 
-                opacity: 1;
-                transform: scale(1) rotate(180deg);
-            }
-        }
-
-        @-webkit-keyframes bounce {
-            0%, 100% { -webkit-transform: translateY(0); transform: translateY(0); }
-            50% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .arrow-indicator {
-            text-align: center;
-            font-size: 18px;
-            color: #667eea;
-            margin-bottom: 10px;
-            -webkit-animation: bounce 1s ease-in-out infinite;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        /* Социальное доказательство */
-        .social-proof {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-
-        .avatars {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: -10px;
-            border: 3px solid white;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .avatar:first-child { margin-left: 0; }
 
         .stats {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            gap: 40px;
+            text-align: center;
             margin-top: 20px;
         }
 
         .stat {
-            text-align: center;
+            margin: 10px 0;
         }
 
         .stat-number {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: #667eea;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 600px) {
-            .main-card {
-                padding: 20px 15px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-
-            .subtitle {
-                font-size: 16px;
-            }
-            
-            .gift-item {
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
-            }
-
-            .gift-icon {
-                margin-bottom: 10px;
-            }
-            
-            .gift-value {
-                position: static;
-                display: inline-block;
-                margin-top: 10px;
-            }
-            
-            .stats {
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -webkit-flex-direction: column;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .cta-button {
-                padding: 15px;
-            }
-
-            .button-text {
-                font-size: 18px;
-            }
-
-            .button-subtext {
-                font-size: 12px;
-            }
-
-            .free-badge {
-                right: 15px;
-                font-size: 14px;
-                padding: 8px 20px;
-            }
-
-            .timer {
-                font-size: 20px;
-            }
-
-            .timer-container {
-                padding: 10px;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .main-card {
-                padding: 15px 10px;
-            }
-            
-            h1 {
-                font-size: 20px;
-            }
-
-            .gift-content h3 {
-                font-size: 16px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Плавающие элементы фона -->
-    <div class="floating-elements">
-        <div class="floating-icon" style="top: 10%; left: 10%; animation-delay: 0s;">🏠</div>
-        <div class="floating-icon" style="top: 20%; left: 80%; animation-delay: 3s;">💰</div>
-        <div class="floating-icon" style="top: 50%; left: 5%; animation-delay: 5s;">📋</div>
-        <div class="floating-icon" style="top: 70%; left: 90%; animation-delay: 7s;">🔑</div>
-        <div class="floating-icon" style="top: 80%; left: 50%; animation-delay: 10s;">💎</div>
-    </div>
-
     <div class="container">
-        <div class="main-card">
-            <div class="free-badge">БЕСПЛАТНО</div>
-            
-            <h1>🎁 Получите 5 профессиональных инструментов для покупки квартиры в Москве</h1>
+        <div class="card">
+            <h1>🎁 Получите 5 инструментов для покупки квартиры в Москве</h1>
             
             <p class="subtitle">
-                Я Мария Ефимова, эксперт SmartKey с 10-летним опытом.<br>
-                Помогла 127 семьям сэкономить в среднем <strong>650 000 ₽</strong> на покупке жилья
+                Я Мария Ефимова, эксперт SmartKey.<br>
+                Помогла 127 семьям сэкономить 650 000 ₽
             </p>
 
-            <div class="timer-container">
-                <div>⏰ Специальное предложение заканчивается через:</div>
-                <div class="timer" id="countdown">05:23:47</div>
+            <div class="timer">
+                <div>⏰ Предложение заканчивается через:</div>
+                <div class="timer-text" id="timer">05:23:47</div>
             </div>
 
-            <div class="gifts-list">
-                <div class="gift-item">
-                    <div class="gift-icon">📋</div>
-                    <div class="gift-content">
-                        <h3>Мастер чек-лист "50 пунктов проверки"</h3>
-                        <p>Защитит от 90% проблем при покупке новостройки</p>
-                    </div>
-                    <span class="gift-value">Ценность 50 000₽</span>
-                </div>
-
-                <div class="gift-item">
-                    <div class="gift-icon">💰</div>
-                    <div class="gift-content">
-                        <h3>Калькулятор реальной стоимости</h3>
-                        <p>Покажет ВСЕ расходы и поможет сэкономить до 500 000₽</p>
-                    </div>
-                    <span class="gift-value">Ценность 30 000₽</span>
-                </div>
-
-                <div class="gift-item">
-                    <div class="gift-icon">📊</div>
-                    <div class="gift-content">
-                        <h3>Ипотечный навигатор 2025</h3>
-                        <p>Все программы господдержки + секретные условия банков</p>
-                    </div>
-                    <span class="gift-value">Ценность 40 000₽</span>
-                </div>
-
-                <div class="gift-item">
-                    <div class="gift-icon">📈</div>
-                    <div class="gift-content">
-                        <h3>Аналитический отчет рынка</h3>
-                        <p>Инсайдерская информация о ценах и трендах июля 2025</p>
-                    </div>
-                    <span class="gift-value">Ценность 70 000₽</span>
-                </div>
-
-                <div class="gift-item">
-                    <div class="gift-icon">💎</div>
-                    <div class="gift-content">
-                        <h3>Каталог "20 скрытых жемчужин"</h3>
-                        <p>ЖК с максимальными скидками до 20% (только в июле!)</p>
-                    </div>
-                    <span class="gift-value">Ценность 100 000₽</span>
-                </div>
+            <div class="gift-item">
+                <div class="gift-title">📋 Чек-лист "50 пунктов проверки"</div>
+                <div class="gift-desc">Защитит от 90% проблем при покупке</div>
             </div>
 
-            <div class="urgency-indicator">
-                Только сегодня! Завтра материалы будут платными
+            <div class="gift-item">
+                <div class="gift-title">💰 Калькулятор стоимости</div>
+                <div class="gift-desc">Сэкономьте до 500 000₽</div>
             </div>
 
-            <div class="arrow-indicator">👇 Нажмите сюда 👇</div>
-
-            <div class="cta-button-wrapper">
-                <span class="star">✨</span>
-                <span class="star">⭐</span>
-                <span class="star">✨</span>
-                <span class="star">⭐</span>
-                <a href="https://t.me/RealtyExpertBot_bot" class="cta-button">
-                    <span class="button-text">🚀 Получить все материалы БЕСПЛАТНО</span>
-                    <span class="button-subtext">Осталось 17 комплектов на сегодня</span>
-                </a>
+            <div class="gift-item">
+                <div class="gift-title">📊 Ипотечный навигатор 2025</div>
+                <div class="gift-desc">Все программы господдержки</div>
             </div>
 
-            <div class="social-proof">
-                <div class="avatars">
-                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
-                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=2')"></div>
-                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=3')"></div>
-                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=4')"></div>
-                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=5')"></div>
+            <div class="gift-item">
+                <div class="gift-title">📈 Аналитический отчет</div>
+                <div class="gift-desc">Цены и тренды июля 2025</div>
+            </div>
+
+            <div class="gift-item">
+                <div class="gift-title">💎 Каталог "20 жемчужин"</div>
+                <div class="gift-desc">ЖК со скидками до 20%</div>
+            </div>
+
+            <div class="urgency">
+                🔥 Только сегодня бесплатно! 🔥
+            </div>
+
+            <a href="https://t.me/RealtyExpertBot_bot" class="button">
+                Получить все материалы БЕСПЛАТНО
+            </a>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">3247</div>
+                    <div>человек уже получили</div>
                 </div>
-                <p style="color: #666; margin-bottom: 20px;">
-                    Присоединяйтесь к <strong id="visitor-count">3247</strong> счастливым обладателям материалов
-                </p>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number">127</div>
-                        <div class="stat-label">Семей купили квартиры</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">650 000₽</div>
-                        <div class="stat-label">Средняя экономия</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">4.9/5</div>
-                        <div class="stat-label">Оценка клиентов</div>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">127</div>
+                    <div>семей купили квартиры</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.9/5</div>
+                    <div>оценка клиентов</div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Проверка поддержки необходимых функций
-        if (!String.prototype.padStart) {
-            String.prototype.padStart = function padStart(targetLength, padString) {
-                targetLength = targetLength >> 0;
-                padString = String(typeof padString !== 'undefined' ? padString : ' ');
-                if (this.length >= targetLength) {
-                    return String(this);
-                } else {
-                    targetLength = targetLength - this.length;
-                    if (targetLength > padString.length) {
-                        padString += padString.repeat(targetLength / padString.length);
-                    }
-                    return padString.slice(0, targetLength) + String(this);
+        // Простой таймер
+        function updateTimer() {
+            var timer = document.getElementById('timer');
+            if (!timer) return;
+            
+            var parts = timer.innerText.split(':');
+            var h = parseInt(parts[0]);
+            var m = parseInt(parts[1]);
+            var s = parseInt(parts[2]);
+            
+            s--;
+            if (s < 0) {
+                s = 59;
+                m--;
+                if (m < 0) {
+                    m = 59;
+                    h--;
+                    if (h < 0) h = 23;
                 }
-            };
-        }
-
-        // Таймер обратного отсчета
-        function updateCountdown() {
-            try {
-                var countdownEl = document.getElementById('countdown');
-                if (!countdownEl) return;
-                
-                var time = countdownEl.textContent.split(':');
-                var hours = parseInt(time[0]) || 5;
-                var minutes = parseInt(time[1]) || 23;
-                var seconds = parseInt(time[2]) || 47;
-                
-                seconds--;
-                
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                    if (minutes < 0) {
-                        minutes = 59;
-                        hours--;
-                        if (hours < 0) {
-                            hours = 23;
-                        }
-                    }
-                }
-                
-                countdownEl.textContent = 
-                    String(hours).padStart(2, '0') + ':' + 
-                    String(minutes).padStart(2, '0') + ':' + 
-                    String(seconds).padStart(2, '0');
-            } catch (error) {
-                console.error('Ошибка в таймере:', error);
             }
+            
+            timer.innerText = 
+                (h < 10 ? '0' + h : h) + ':' + 
+                (m < 10 ? '0' + m : m) + ':' + 
+                (s < 10 ? '0' + s : s);
         }
         
-        setInterval(updateCountdown, 1000);
-
-        // Счетчик посетителей (имитация)
-        function updateVisitorCount() {
-            try {
-                var countEl = document.getElementById('visitor-count');
-                if (!countEl) return;
-                
-                var currentCount = parseInt(countEl.textContent.replace(/\s/g, '')) || 3247;
-                var newCount = currentCount + Math.floor(Math.random() * 3) + 1;
-                
-                // Форматирование числа для разных локалей
-                if (typeof newCount.toLocaleString === 'function') {
-                    countEl.textContent = newCount.toLocaleString('ru-RU');
-                } else {
-                    countEl.textContent = String(newCount);
-                }
-            } catch (error) {
-                console.error('Ошибка в счетчике:', error);
-            }
-        }
-        
-        setInterval(updateVisitorCount, 5000);
-
-        // Уменьшение количества оставшихся комплектов
-        var remainingKits = 17;
-        function updateRemainingKits() {
-            try {
-                var subtextEl = document.querySelector('.button-subtext');
-                if (!subtextEl) return;
-                
-                if (remainingKits > 3) {
-                    remainingKits -= Math.floor(Math.random() * 2) + 1;
-                    if (remainingKits < 3) remainingKits = 3;
-                    subtextEl.textContent = 'Осталось ' + remainingKits + ' комплектов на сегодня';
-                }
-            } catch (error) {
-                console.error('Ошибка в счетчике комплектов:', error);
-            }
-        }
-        
-        setInterval(updateRemainingKits, 30000);
-
-        // Добавляем обработчик для iOS Safari
-        document.addEventListener('touchstart', function() {}, {passive: true});
+        setInterval(updateTimer, 1000);
     </script>
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-    try {
-       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-       m[i].l=1*new Date();
-       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-       
-       ym(102996203, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-       });
-    } catch(e) {
-        console.error('Ошибка загрузки Яндекс.Метрики:', e);
-    }
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/102996203" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
 </body>
 </html>
