@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Получите 5 инструментов для выгодной покупки квартиры БЕСПЛАТНО</title>
     <style>
         * {
@@ -100,6 +101,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-align: center;
         }
 
@@ -146,11 +148,12 @@
             padding: 20px;
             margin-bottom: 15px;
             display: flex;
-            align-items: start;
+            align-items: flex-start;
             gap: 15px;
             transition: all 0.3s ease;
             animation: slideIn 0.6s ease-out forwards;
             opacity: 0;
+            position: relative;
         }
 
         .gift-item:nth-child(1) { animation-delay: 0.1s; }
@@ -221,6 +224,8 @@
             position: relative;
             overflow: hidden;
             animation: buttonPulse 2s ease-in-out infinite;
+            text-decoration: none;
+            text-align: center;
         }
 
         @keyframes buttonPulse {
@@ -258,24 +263,6 @@
 
         .cta-button:hover::before {
             left: 100%;
-        }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .cta-button:active::after {
-            width: 300px;
-            height: 300px;
         }
 
         /* Дополнительные визуальные элементы для кнопки */
@@ -319,21 +306,16 @@
         }
 
         /* Звездочки вокруг кнопки */
-        .cta-button-wrapper {
-            position: relative;
-            margin: 30px 0;
-        }
-
         .star {
             position: absolute;
             font-size: 20px;
             animation: sparkle 3s ease-in-out infinite;
         }
 
-        .star:nth-child(2) { top: 10px; left: 10%; animation-delay: 0s; }
-        .star:nth-child(3) { top: 10px; right: 10%; animation-delay: 0.5s; }
-        .star:nth-child(4) { bottom: 10px; left: 20%; animation-delay: 1s; }
-        .star:nth-child(5) { bottom: 10px; right: 20%; animation-delay: 1.5s; }
+        .star:nth-child(1) { top: 10px; left: 10%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 10px; right: 10%; animation-delay: 0.5s; }
+        .star:nth-child(3) { bottom: 10px; left: 20%; animation-delay: 1s; }
+        .star:nth-child(4) { bottom: 10px; right: 20%; animation-delay: 1.5s; }
 
         @keyframes sparkle {
             0%, 100% { 
@@ -444,18 +426,12 @@
             .button-subtext {
                 font-size: 12px;
             }
-        }
 
-        /* Анимация появления элементов при скролле */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .free-badge {
+                right: 15px;
+                font-size: 14px;
+                padding: 8px 20px;
+            }
         }
     </style>
 </head>
@@ -543,10 +519,10 @@
                 <span class="star">⭐</span>
                 <span class="star">✨</span>
                 <span class="star">⭐</span>
-                <button class="cta-button" onclick="submitForm()">
+                <a href="https://t.me/RealtyExpertBot_bot" class="cta-button">
                     <span class="button-text">🚀 Получить все материалы БЕСПЛАТНО</span>
                     <span class="button-subtext">Осталось 17 комплектов на сегодня</span>
-                </button>
+                </a>
             </div>
 
             <div class="social-proof">
@@ -558,7 +534,7 @@
                     <div class="avatar" style="background-image: url('https://i.pravatar.cc/150?img=5')"></div>
                 </div>
                 <p style="color: #666; margin-bottom: 20px;">
-                    Присоединяйтесь к <strong>3 247</strong> счастливым обладателям материалов
+                    Присоединяйтесь к <strong id="visitor-count">3247</strong> счастливым обладателям материалов
                 </p>
                 <div class="stats">
                     <div class="stat">
@@ -581,88 +557,94 @@
     <script>
         // Таймер обратного отсчета
         function updateCountdown() {
-            const countdownEl = document.getElementById('countdown');
-            let time = countdownEl.textContent.split(':');
-            let hours = parseInt(time[0]);
-            let minutes = parseInt(time[1]);
-            let seconds = parseInt(time[2]);
-            
-            seconds--;
-            
-            if (seconds < 0) {
-                seconds = 59;
-                minutes--;
-                if (minutes < 0) {
-                    minutes = 59;
-                    hours--;
-                    if (hours < 0) {
-                        hours = 23;
+            try {
+                const countdownEl = document.getElementById('countdown');
+                if (!countdownEl) return;
+                
+                let time = countdownEl.textContent.split(':');
+                let hours = parseInt(time[0]) || 5;
+                let minutes = parseInt(time[1]) || 23;
+                let seconds = parseInt(time[2]) || 47;
+                
+                seconds--;
+                
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) {
+                            hours = 23;
+                        }
                     }
                 }
+                
+                countdownEl.textContent = 
+                    String(hours).padStart(2, '0') + ':' + 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0');
+            } catch (error) {
+                console.error('Ошибка в таймере:', error);
             }
-            
-            countdownEl.textContent = 
-                String(hours).padStart(2, '0') + ':' + 
-                String(minutes).padStart(2, '0') + ':' + 
-                String(seconds).padStart(2, '0');
         }
         
         setInterval(updateCountdown, 1000);
 
-        // Функция для кнопки
-        function submitForm() {
-            window.location.href = 'https://t.me/RealtyExpertBot_bot';
-        }
-
-        // Анимация при скролле
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
         // Счетчик посетителей (имитация)
-        setInterval(() => {
-            const currentCount = parseInt(document.querySelector('.social-proof strong').textContent.replace(/\s/g, ''));
-            const newCount = currentCount + Math.floor(Math.random() * 3) + 1;
-            document.querySelector('.social-proof strong').textContent = newCount.toLocaleString('ru-RU');
-        }, 5000);
+        function updateVisitorCount() {
+            try {
+                const countEl = document.getElementById('visitor-count');
+                if (!countEl) return;
+                
+                const currentCount = parseInt(countEl.textContent.replace(/\s/g, '')) || 3247;
+                const newCount = currentCount + Math.floor(Math.random() * 3) + 1;
+                countEl.textContent = newCount.toLocaleString('ru-RU');
+            } catch (error) {
+                console.error('Ошибка в счетчике:', error);
+            }
+        }
+        
+        setInterval(updateVisitorCount, 5000);
 
         // Уменьшение количества оставшихся комплектов
         let remainingKits = 17;
-        setInterval(() => {
-            if (remainingKits > 3) {
-                remainingKits -= Math.floor(Math.random() * 2) + 1;
-                if (remainingKits < 3) remainingKits = 3;
-                document.querySelector('.button-subtext').textContent = `Осталось ${remainingKits} комплектов на сегодня`;
+        function updateRemainingKits() {
+            try {
+                const subtextEl = document.querySelector('.button-subtext');
+                if (!subtextEl) return;
+                
+                if (remainingKits > 3) {
+                    remainingKits -= Math.floor(Math.random() * 2) + 1;
+                    if (remainingKits < 3) remainingKits = 3;
+                    subtextEl.textContent = `Осталось ${remainingKits} комплектов на сегодня`;
+                }
+            } catch (error) {
+                console.error('Ошибка в счетчике комплектов:', error);
             }
-        }, 30000);
+        }
+        
+        setInterval(updateRemainingKits, 30000);
     </script>
 
     <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
+    <script type="text/javascript">
+    try {
        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
        m[i].l=1*new Date();
        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       
        ym(102996203, "init", {
             clickmap:true,
             trackLinks:true,
             accurateTrackBounce:true,
             webvisor:true
        });
+    } catch(e) {
+        console.error('Ошибка загрузки Яндекс.Метрики:', e);
+    }
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/102996203" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
